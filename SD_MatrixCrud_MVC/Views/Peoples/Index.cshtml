@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SD_MatrixCrud_MVC.Models.Person>
+
+@{
+    ViewData["Title"] = "Funcionários";
+}
+    <h4>Cadastro de pessoas</h4>
+
+<table class="table table-hover" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adress2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                <a asp-action="PersonAddOrEdit" class="btn btn-outline-success"><i class="far fa-plus-square"></i>Novo</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adress)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Adress2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Complement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+                <td>
+                    <a asp-action="PersonAddOrEdit" asp-route-id="@item.Id"><i class="fa fa-marker fa-lg"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Deseja realmente deletar?')" class="text-danger ml-1" ><i class="fa fa-trash-alt fa lg"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
